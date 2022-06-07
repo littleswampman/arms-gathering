@@ -14,6 +14,7 @@ function App() {
                     <button
                         type="button"
                         onClick={() => setCount((count) => count + 1)}
+                        className="text-2xl"
                     >
                         count is: {count}
                     </button>
