@@ -1,6 +1,8 @@
 import { useState } from "react";
 import logo from "./logo.svg";
 import "./App.css";
+import styles from "./scssTest.module.scss";
+
 
 function App() {
     const [count, setCount] = useState(0);
@@ -41,6 +43,7 @@ function App() {
                         Vite Docs
                     </a>
                 </p>
+                <p className={styles.text}>this is scss test</p>
             </header>
         </div>
     );
