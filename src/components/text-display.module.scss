@@ -1,0 +1,23 @@
+@keyframes typing {
+    from {
+        width: 0;
+        opacity: 1;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.wrapper {
+    animation: appear 2s;
+}
+
+.type-writer {
+    --length: 10;
+    width: calc(1ch * var(--length));
+    opacity: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    animation: typing calc(0.2s * var(--length)) steps(var(--length), end)
+        forwards;
+}
