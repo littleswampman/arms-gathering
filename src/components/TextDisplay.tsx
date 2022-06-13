@@ -20,7 +20,7 @@ export const TextDisplay: FC<Props> = ({ texts }) => {
                     "--length": text.length,
                     "animation-delay": startSecond + "s",
                 } as React.CSSProperties;
-                startSecond += 2 + 0.2;
+                startSecond += text.length * 0.2 + 0.2;
 
                 return (
                     <p
