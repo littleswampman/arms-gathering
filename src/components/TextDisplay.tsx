@@ -15,12 +15,13 @@ export const TextDisplay: FC<Props> = ({ texts }) => {
                 "rounded-md border-4 border-solid border-slate-100 p-4"
             }
         >
-            {texts.map((text, index) => {
+            {texts.map((text) => {
+                let textLength = text.length;
                 let p_style_typewriter = {
-                    "--length": text.length,
+                    "--length": textLength,
                     "animation-delay": startSecond + "s",
                 } as React.CSSProperties;
-                startSecond += text.length * 0.2 + 0.2;
+                startSecond += textLength * 0.2 + 0.2;
 
                 return (
                     <p
