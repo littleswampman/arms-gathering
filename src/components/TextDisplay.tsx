@@ -1,9 +1,8 @@
 import React, { FC } from "react";
+import { displayedText } from "../types/displayedText";
 import styles from "./text-display.module.scss";
 
-type Props = {
-    texts: string[];
-};
+type Props = displayedText;
 
 export const TextDisplay: FC<Props> = ({ texts }) => {
     let startSecond = 0;
