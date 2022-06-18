@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { useRecoilValue, useSetRecoilState, SetterOrUpdater } from "recoil";
+import { useSetRecoilState, SetterOrUpdater } from "recoil";
 
 import { Layout } from "../layout/Layout";
 import { displayedText } from "../types/displayedText";
@@ -10,13 +10,24 @@ export const Playing: FC = () => {
     const setDisplayedText: SetterOrUpdater<displayedText> =
         useSetRecoilState(displayedTextState);
     setDisplayedText({
-        texts: ["てきがあらわれた！！", "ぶきをもて！！", "たちむかうんだ！！"],
+        texts: [
+            "てきがあらわれた！！",
+            "ぶきをもて！！",
+            "たちむかうんだ！！",
+            "まだあるのか！！",
+            "おかわりもいいぞ！",
+            "もうちっとだけ続くんじゃ",
+            "俺たちの戦いはこれからだ！",
+        ],
     });
 
     return (
         <Layout>
-            <div>Playing</div>
-            <TextDisplay />
+            <div className="relative h-full w-full">
+                <div className="absolute bottom-0 w-full">
+                    <TextDisplay />
+                </div>
+            </div>
         </Layout>
     );
 };

@@ -11,8 +11,9 @@ type Props = {
 export const Layout: FC<Props> = ({ children }) => {
     return (
         <div className={`${styles.layout_div} overflow-hidden text-gray-100`}>
-            <nav className="">{/* <Nav /> */}</nav>
-            <article className="p-1 md:p-4 lg:p-8">{children}</article>
+            <article className="h-screen w-screen p-1 md:p-4 lg:p-8">
+                {children}
+            </article>
         </div>
     );
 };
