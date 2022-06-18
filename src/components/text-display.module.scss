@@ -3,7 +3,22 @@
         width: 0;
         opacity: 1;
     }
+
     to {
+        opacity: 1;
+    }
+}
+
+@keyframes line {
+    0% {
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    100% {
         opacity: 1;
     }
 }
@@ -12,12 +27,23 @@
     height: 7rem;
 }
 
+.type-writer_wrapper {
+    --line-text-length: 10;
+    --line-length: 10;
+    position: absolute;
+    left: 1rem;
+    top: 1rem;
+    opacity: 0;
+    animation: line
+        calc(0.2s * (var(--line-text-length) + var(--line-length) + 1));
+}
+
 .type-writer {
-    --length: 10;
-    width: calc(1ch * var(--length));
+    --text-length: 10;
+    width: calc(1ch * var(--text-length));
     opacity: 0;
     white-space: nowrap;
     overflow: hidden;
-    animation: typing calc(0.2s * var(--length)) steps(var(--length), end)
-        forwards;
+    animation: typing calc(0.2s * var(--text-length))
+        steps(var(--text-length), end) forwards;
 }
