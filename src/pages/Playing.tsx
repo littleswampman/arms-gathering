@@ -11,7 +11,7 @@ export const Playing: FC = () => {
         useSetRecoilState(displayedTextState);
     setDisplayedText({
         texts: [
-            "てきがあらわれた！！",
+            "てきがあらわれた！！！！！！！！！！！！！",
             "ぶきをもて！！",
             "たちむかうんだ！！",
             "まだあるのか！！",

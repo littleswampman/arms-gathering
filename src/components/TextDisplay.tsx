@@ -14,14 +14,20 @@ export const TextDisplay: FC = () => {
             .fill(0)
             .map((_: 0, i: number) => arr.slice(i * n, (i + 1) * n));
     };
-    // const sliceByNumber = (array, number) => {
-    //     const length = Math.ceil(array.length / number)
-    //     return new Array(length).fill().map((_, i) =>
-    //       array.slice(i * number, (i + 1) * number)
-    //     )
-    //   }
     const lines = 3; // 一度に表示する最大行数
-    const texts = splitArray(useRecoilValue(displayedTextState).texts, lines); // lines行ごとに分割されている
+    const rows = 13; // 一行に表示する最大文字数
+    const texts = splitArray(
+        (() => {
+            let texts: string[] = [];
+            useRecoilValue(displayedTextState).texts.map((text) =>
+                text.length <= rows
+                    ? texts.push(text)
+                    : texts.push(text.slice(0, rows), text.slice(rows)),
+            );
+            return texts;
+        })(),
+        lines,
+    ); // 最大rows文字のlines行ごとに分割されている
     console.log(texts);
 
     return (
