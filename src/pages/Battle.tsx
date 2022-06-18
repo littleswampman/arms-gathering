@@ -3,12 +3,12 @@ import { useSetRecoilState, SetterOrUpdater } from "recoil";
 
 import { Layout } from "../layout/Layout";
 import { displayedText } from "../types/displayedText";
-import { displayedTextState } from "../atoms/displayedTextState";
+import { displayedTextAtom } from "../atoms/displayedTextAtom";
 import { TextDisplay } from "../components/TextDisplay";
 
 export const Battle: FC = () => {
     const setDisplayedText: SetterOrUpdater<displayedText> =
-        useSetRecoilState(displayedTextState);
+        useSetRecoilState(displayedTextAtom);
     setDisplayedText({
         texts: ["たたかい"],
     });
