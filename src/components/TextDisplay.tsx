@@ -19,7 +19,6 @@ export const TextDisplay: FC = () => {
     const texts = splitArray(
         (() => {
             let val = useRecoilValue(displayedTextState).texts;
-            console.log(val);
             while (val.some((el) => el.length > rows)) {
                 const temp = val;
                 val = [];
@@ -33,7 +32,6 @@ export const TextDisplay: FC = () => {
         })(),
         lines,
     ); // 最大rows文字のlines行ごとに分割されている
-    console.log(texts);
 
     return (
         <div
