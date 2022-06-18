@@ -29,7 +29,7 @@ export const TextDisplay: FC = () => {
             className={
                 styles["wrapper"] +
                 " " +
-                "relative rounded-md border-4 border-solid border-slate-100 p-4"
+                "relative rounded-md border-4 border-solid border-slate-100 p-2 md:p-4 lg:p-6"
             }
         >
             {texts.map((line, i, array) => {
