@@ -1,11 +1,12 @@
 import React, { FC } from "react";
-import { displayedText } from "../types/displayedText";
+import { useRecoilValue } from "recoil";
+
+import { displayedTextState } from "../atoms/displayedTextState";
 import styles from "./text-display.module.scss";
 
-type Props = displayedText;
-
-export const TextDisplay: FC<Props> = ({ texts }) => {
+export const TextDisplay: FC = () => {
     let startSecond = 0;
+    const texts = useRecoilValue(displayedTextState).texts;
     return (
         <div
             className={
