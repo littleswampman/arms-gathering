@@ -18,13 +18,18 @@ export const TextDisplay: FC = () => {
     const rows = 13; // 一行に表示する最大文字数
     const texts = splitArray(
         (() => {
-            let texts: string[] = [];
-            useRecoilValue(displayedTextState).texts.map((text) =>
-                text.length <= rows
-                    ? texts.push(text)
-                    : texts.push(text.slice(0, rows), text.slice(rows)),
-            );
-            return texts;
+            let val = useRecoilValue(displayedTextState).texts;
+            console.log(val);
+            while (val.some((el) => el.length > rows)) {
+                const temp = val;
+                val = [];
+                temp.map((text) =>
+                    text.length <= rows
+                        ? val.push(text)
+                        : val.push(text.slice(0, rows), text.slice(rows)),
+                );
+            }
+            return val;
         })(),
         lines,
     ); // 最大rows文字のlines行ごとに分割されている
