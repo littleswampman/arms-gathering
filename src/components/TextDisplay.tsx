@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import { useRecoilValue } from "recoil";
 
-import { displayedTextAtom } from "../atoms/displayedTextAtom";
+import { displayedTextSelector } from "../selectors/displayedTextSelector";
 import styles from "./text-display.module.scss";
 
 export const TextDisplay: FC = () => {
@@ -18,7 +18,7 @@ export const TextDisplay: FC = () => {
     const rows = 13; // 一行に表示する最大文字数
     const texts = splitArray(
         (() => {
-            let val = useRecoilValue(displayedTextAtom).texts;
+            let val = useRecoilValue(displayedTextSelector).texts;
             while (val.some((el) => el.length > rows)) {
                 const temp = val;
                 val = [];
