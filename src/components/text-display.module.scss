@@ -47,3 +47,9 @@
     animation: typing calc(0.2s * var(--text-length))
         steps(var(--text-length), end) forwards;
 }
+
+.hankaku-to-zenkaku {
+    // width: 20px;
+    padding: 0 5px;
+    text-align: center;
+}

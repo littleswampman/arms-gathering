@@ -34,6 +34,7 @@ export const TextDisplay: FC = () => {
     ); // 最大rows文字のlines行ごとに分割されている
 
     return (
+        // TODO まぁまぁ複雑になったので後で整理する
         <div
             className={
                 styles["wrapper"] +
@@ -76,7 +77,27 @@ export const TextDisplay: FC = () => {
                                     style={p_style_typewriter}
                                     className={styles["type-writer"]}
                                 >
-                                    {text}
+                                    {(() => {
+                                        let temp: JSX.Element[] = [];
+                                        for (let i = 0; i < textLength; i++) {
+                                            text[i].match(/[ -~]/)
+                                                ? temp.push(
+                                                    <span
+                                                        className={
+                                                            styles[
+                                                            "hankaku-to-zenkaku"
+                                                            ]
+                                                        }
+                                                    >
+                                                        {text[i]}
+                                                    </span>,
+                                                )
+                                                : temp.push(
+                                                    <span>{text[i]}</span>,
+                                                );
+                                        }
+                                        return temp;
+                                    })().map((el) => el)}
                                 </p>
                             );
                         })}
