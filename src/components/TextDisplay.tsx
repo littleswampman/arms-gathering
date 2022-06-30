@@ -1,37 +1,13 @@
 import React, { FC } from "react";
 import { useRecoilValue } from "recoil";
 
-import { displayedTextSelector } from "../selectors/displayedTextSelector";
+import { processedDisplayedTextSelector } from "../selectors/displayedTextSelector";
 import styles from "./text-display.module.scss";
 
 export const TextDisplay: FC = () => {
     let textStartSecond = 0;
     let lineStartSecond = 0;
-    const splitArray = (arr: string[], n: number) => {
-        // 配列arrをn個の要素ごとに分割する関数
-        const repeat = Math.ceil(arr.length / n);
-        return new Array(repeat)
-            .fill(0)
-            .map((_: 0, i: number) => arr.slice(i * n, (i + 1) * n));
-    };
-    const lines = 3; // 一度に表示する最大行数
-    const rows = 13; // 一行に表示する最大文字数
-    const texts = splitArray(
-        (() => {
-            let val = useRecoilValue(displayedTextSelector).texts;
-            while (val.some((el) => el.length > rows)) {
-                const temp = val;
-                val = [];
-                temp.map((text) =>
-                    text.length <= rows
-                        ? val.push(text)
-                        : val.push(text.slice(0, rows), text.slice(rows)),
-                );
-            }
-            return val;
-        })(),
-        lines,
-    ); // 最大rows文字のlines行ごとに分割されている
+    const texts = useRecoilValue(processedDisplayedTextSelector);
 
     return (
         // TODO まぁまぁ複雑になったので後で整理する
@@ -82,19 +58,19 @@ export const TextDisplay: FC = () => {
                                         for (let i = 0; i < textLength; i++) {
                                             text[i].match(/[ -~]/)
                                                 ? temp.push(
-                                                    <span
-                                                        className={
-                                                            styles[
-                                                            "hankaku-to-zenkaku"
-                                                            ]
-                                                        }
-                                                    >
-                                                        {text[i]}
-                                                    </span>,
-                                                )
+                                                      <span
+                                                          className={
+                                                              styles[
+                                                                  "hankaku-to-zenkaku"
+                                                              ]
+                                                          }
+                                                      >
+                                                          {text[i]}
+                                                      </span>,
+                                                  )
                                                 : temp.push(
-                                                    <span>{text[i]}</span>,
-                                                );
+                                                      <span>{text[i]}</span>,
+                                                  );
                                         }
                                         return temp;
                                     })().map((el) => el)}
