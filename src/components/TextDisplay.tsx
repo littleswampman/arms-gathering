@@ -13,67 +13,65 @@ export const TextDisplay: FC = () => {
         // TODO まぁまぁ複雑になったので後で整理する
         <div
             className={
-                styles["wrapper"] +
-                " " +
-                "relative rounded-md border-4 border-solid border-slate-100 p-2 md:p-4 lg:p-6"
+                `${styles.wrapper} ` +
+                `relative rounded-md border-4 border-solid border-slate-100 p-2 md:p-4 lg:p-6`
             }
         >
             {texts.map((line, i, array) => {
-                let lineTextLength = line
+                const lineTextLength = line
                     .map((text) => text.length)
                     .reduce((sum, len) => sum + len, 0);
                 // 表示する行に含まれる文字数
-                let lineLength = line.length;
+                const lineLength = line.length;
                 // 表示する行数
-                let div_style_typewriterWrapper = {
+                const divStyleTypewriterWrapper = {
                     "--line-text-length": lineTextLength,
                     "--line-length": lineLength,
-                    "animation-delay": lineStartSecond + "s",
+                    "animation-delay": `${lineStartSecond}s`,
                     "animation-fill-mode":
                         array.length === i + 1 ? "forwards" : "none",
                 } as React.CSSProperties;
                 textStartSecond = lineStartSecond;
 
                 lineStartSecond += (lineTextLength + lineLength) * 0.2 + 0.2;
+
                 return (
                     <div
-                        style={div_style_typewriterWrapper}
+                        style={divStyleTypewriterWrapper}
                         className={styles["type-writer_wrapper"]}
                     >
                         {line.map((text) => {
-                            let textLength = text.length;
-                            let p_style_typewriter = {
+                            const textLength = text.length;
+                            const pStyleTypewriter = {
                                 "--text-length": textLength,
-                                "animation-delay": textStartSecond + "s",
+                                "animation-delay": `${textStartSecond}s`,
                             } as React.CSSProperties;
                             textStartSecond += textLength * 0.2 + 0.2;
 
                             return (
                                 <p
-                                    style={p_style_typewriter}
+                                    style={pStyleTypewriter}
                                     className={styles["type-writer"]}
                                 >
-                                    {(() => {
-                                        let temp: JSX.Element[] = [];
-                                        for (let i = 0; i < textLength; i++) {
-                                            text[i].match(/[ -~]/)
-                                                ? temp.push(
-                                                      <span
-                                                          className={
-                                                              styles[
-                                                                  "hankaku-to-zenkaku"
-                                                              ]
-                                                          }
-                                                      >
-                                                          {text[i]}
-                                                      </span>,
-                                                  )
-                                                : temp.push(
-                                                      <span>{text[i]}</span>,
-                                                  );
-                                        }
-                                        return temp;
-                                    })().map((el) => el)}
+                                    {(() =>
+                                        [...Array(textLength).keys()]
+                                            .slice()
+                                            .map((j) =>
+                                                // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+                                                text[j].match(/[ -~]/) ? (
+                                                    <span
+                                                        className={
+                                                            styles[
+                                                                "hankaku-to-zenkaku"
+                                                            ]
+                                                        }
+                                                    >
+                                                        {text[j]}
+                                                    </span>
+                                                ) : (
+                                                    <span>{text[j]}</span>
+                                                ),
+                                            ))().map((el) => el)}
                                 </p>
                             );
                         })}
