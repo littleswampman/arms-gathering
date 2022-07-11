@@ -8,6 +8,7 @@ module.exports = {
         "plugin:react/recommended",
         "airbnb",
         "airbnb/hooks",
+        "airbnb-typescript",
         "plugin:import/errors",
         "plugin:import/warnings",
         "plugin:import/typescript",
@@ -37,6 +38,8 @@ module.exports = {
     rules: {
         // "no-use-before-define": "off",
         // "@typescript-eslint/no-use-before-define": ["error"],
+        "import/prefer-default-export": "off",
+        "import/no-default-export": "error",
         "lines-between-class-members": [
             "error",
             "always",
