@@ -1,10 +1,10 @@
-import { BaseStatus } from "./baseStatus";
-import { Arm } from "./arm";
-import { statusAilment } from "./statusAilment";
-import { character } from "./character";
+import { BaseStatus } from "./BaseStatus";
+import { Arm } from "./Arm";
+import { StatusAilment } from "./StatusAilment";
+import { Character } from "./Character";
 
 export type AllStatus = {
-    character: character;
+    character: Character;
     hp: BaseStatus["hp"];
     level: BaseStatus["level"];
     str: BaseStatus["str"];
@@ -12,6 +12,6 @@ export type AllStatus = {
     piety: BaseStatus["piety"];
     luck: BaseStatus["luck"];
     avoidance: BaseStatus["avoidance"];
-    statusAilment: [statusAilment] | [];
+    statusAilment: [StatusAilment] | [];
     arms: Arm[];
 };

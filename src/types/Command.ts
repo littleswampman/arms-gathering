@@ -1,6 +1,6 @@
-import { baseStatusArray } from "./status";
+import { baseStatusArray } from "./BaseStatus";
 
-export type command = {
+export type Command = {
     name: string;
     description?: string;
     effect: {
