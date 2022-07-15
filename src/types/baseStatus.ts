@@ -1,8 +1,4 @@
-import { statusAilment } from "./statusAilment";
-import { arm } from "./arm";
-import { character } from "./character";
-
-export type baseStatus = {
+export type BaseStatus = {
     hp: number; // 生命力 おぞましい程の傷を受けても立ち上がる生命力は、怪物と冒険者の分かり易い共通項だろう
     level: number; // 経験 死地を生き抜いてこそ得られるものもあるのかもしれない
     str: number; // 力 膂力のある持ち主にこそ、武器はその力を貸すのだ
@@ -21,16 +17,3 @@ export const baseStatusArray = [
     "luck", // 幸運 死の臭いを嗅ぎ分ける力であり、残念ながらポーカーは強くならない
     "avoidance", // 回避 結局のところ、どんな鋭い攻撃も当たらなければ意味はないのである
 ] as const;
-
-export type allStatus = {
-    character: character;
-    hp: baseStatus["hp"];
-    level: baseStatus["level"];
-    str: baseStatus["str"];
-    iq: baseStatus["iq"];
-    piety: baseStatus["piety"];
-    luck: baseStatus["luck"];
-    avoidance: baseStatus["avoidance"];
-    statusAilment: [statusAilment] | [];
-    arms: arm[];
-};
