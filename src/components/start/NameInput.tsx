@@ -3,19 +3,19 @@ import { useSetRecoilState, SetterOrUpdater, useRecoilValue } from "recoil";
 
 import { Dialog } from "@headlessui/react";
 
-import { Modal } from "./Modal";
-import { Button } from "./Button";
+import { Modal } from "../Modal";
+import { Button } from "../Button";
 
-import { DisplayedText } from "../types/DisplayedText";
-import { displayedTextAtom } from "../atoms/displayedTextAtom";
+import { DisplayedText } from "../../types/DisplayedText";
+import { displayedTextAtom } from "../../atoms/displayedTextAtom";
 
-import { AllStatus } from "../types/AllStatus";
-import { allStatusAtom } from "../atoms/allStatusAtom";
-import { allStatusSelector } from "../selectors/allStatusSelector";
+import { AllStatus } from "../../types/AllStatus";
+import { allStatusAtom } from "../../atoms/allStatusAtom";
+import { allStatusSelector } from "../../selectors/allStatusSelector";
 
-import { GameProgress } from "../types/GameProgress";
-import { gameProgressAtom } from "../atoms/gameProgressAtom";
-import { gameProgressSelector } from "../selectors/gameProgressSelector";
+import { GameProgress } from "../../types/GameProgress";
+import { gameProgressAtom } from "../../atoms/gameProgressAtom";
+import { gameProgressSelector } from "../../selectors/gameProgressSelector";
 
 export const NameInput: FC = () => {
     const setDisplayedText: SetterOrUpdater<DisplayedText> =
@@ -100,7 +100,7 @@ export const NameInput: FC = () => {
                         onClick={() => {
                             confirmCharacter(characterName, characterAge);
                             closeModal();
-                            setGameProgress("start_age-input");
+                            setGameProgress("start_select-arms");
                         }}
                     >
                         Ok

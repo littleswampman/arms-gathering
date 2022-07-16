@@ -1,14 +1,14 @@
 import React, { FC } from "react";
 import { useSetRecoilState, SetterOrUpdater, useRecoilValue } from "recoil";
 
-import { Button } from "./Button";
+import { Button } from "../Button";
 
-import { DisplayedText } from "../types/DisplayedText";
-import { displayedTextAtom } from "../atoms/displayedTextAtom";
+import { DisplayedText } from "../../types/DisplayedText";
+import { displayedTextAtom } from "../../atoms/displayedTextAtom";
 
-import { GameProgress } from "../types/GameProgress";
-import { gameProgressAtom } from "../atoms/gameProgressAtom";
-import { gameProgressSelector } from "../selectors/gameProgressSelector";
+import { GameProgress } from "../../types/GameProgress";
+import { gameProgressAtom } from "../../atoms/gameProgressAtom";
+import { gameProgressSelector } from "../../selectors/gameProgressSelector";
 
 export const GameStart: FC = () => {
     const setDisplayedText: SetterOrUpdater<DisplayedText> =
