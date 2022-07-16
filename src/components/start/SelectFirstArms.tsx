@@ -65,42 +65,44 @@ export const SelectFirstArms: FC = () => {
         <div className="flex items-center justify-center">
             <div>A</div>
             <div>B</div>
-            {createTwoArms(0, 0, selectFirstArmsProgress).map((arm, i) => (
-                <Button
-                    onClick={() => {
-                        setArms(
-                            arms[0].wearEffect[0].effect < 0
-                                ? [arm]
-                                : [...arms, arm],
-                        );
-                        selectFirstArmsProgress ===
-                        whereToWear[whereToWear.length - 1]
-                            ? (() => {
-                                  setGameProgress("game_start");
-                                  setAllStatus({ ...allStatus, arms });
-                              })()
-                            : setSelectFirstArmsProgress(
-                                  whereToWear[
-                                      whereToWear.indexOf(
-                                          selectFirstArmsProgress,
-                                      ) + 1
-                                  ],
-                              );
-                    }}
-                    // eslint-disable-next-line react/no-array-index-key
-                    key={i}
-                >
-                    <p>where: {arm.whereToWear}</p>
-                    <div>
-                        <p>effect: </p>
-                        {arm.wearEffect.map((effect) => (
-                            <p key={effect.effect}>
-                                {`${effect.status}が${effect.effect}変化する`}
-                            </p>
-                        ))}
-                    </div>
-                </Button>
-            ))}
+            {createTwoArms(allStatus.luck, 1, selectFirstArmsProgress).map(
+                (arm, i) => (
+                    <Button
+                        onClick={() => {
+                            setArms(
+                                arms[0].wearEffect[0].effect < 0
+                                    ? [arm]
+                                    : [...arms, arm],
+                            );
+                            selectFirstArmsProgress ===
+                            whereToWear[whereToWear.length - 1]
+                                ? (() => {
+                                      setGameProgress("game_start");
+                                      setAllStatus({ ...allStatus, arms });
+                                  })()
+                                : setSelectFirstArmsProgress(
+                                      whereToWear[
+                                          whereToWear.indexOf(
+                                              selectFirstArmsProgress,
+                                          ) + 1
+                                      ],
+                                  );
+                        }}
+                        // eslint-disable-next-line react/no-array-index-key
+                        key={i}
+                    >
+                        <p>where: {arm.whereToWear}</p>
+                        <div>
+                            <p>effect: </p>
+                            {arm.wearEffect.map((effect) => (
+                                <p key={effect.effect}>
+                                    {`${effect.status}が${effect.effect}変化する`}
+                                </p>
+                            ))}
+                        </div>
+                    </Button>
+                ),
+            )}
         </div>
     );
 };

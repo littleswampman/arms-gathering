@@ -11,7 +11,7 @@ export const createArm = (
         whereToWear[Math.floor(Math.random() * whereToWear.length)];
     const status =
         baseStatusArray[Math.floor(Math.random() * baseStatusArray.length)];
-    const effect = Math.ceil(rare * 10 + luck * Math.random() * 1);
+    const effect = Math.ceil(rare * 8 + luck * Math.random() * 1);
 
     return {
         whereToWear: wear,
