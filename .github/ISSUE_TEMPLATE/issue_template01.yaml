@@ -1,0 +1,40 @@
+name: assignment
+labels: ["work"]
+assignees:
+    - littleswampman
+description: work issue
+body:
+    - type: dropdown
+      id: priority
+      attributes:
+          label: What is the priority?
+          # description:
+          multiple: false
+          options:
+              - "top"
+              - "high"
+              - "low"
+      validations:
+          required: true
+    - type: checkboxes
+      id: type-of-work
+      attributes:
+          label: What is the type of work?
+          # description:
+          options:
+              - label: coding
+              - label: writing
+              - label: designing
+              - label: other
+      # validations:
+      #   required: true
+    - type: textarea
+      id: work-detail
+      attributes:
+          label: Please explain the details of the work.
+          # description:
+          placeholder: "Example: There's not enough time."
+          # value:
+          render: Markdown
+      validations:
+          required: true
