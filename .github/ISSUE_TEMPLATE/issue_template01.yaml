@@ -16,18 +16,19 @@ body:
               - "low"
       validations:
           required: true
-    - type: checkboxes
+    - type: dropdown
       id: type-of-work
       attributes:
           label: What is the type of work?
           # description:
+          multiple: true
           options:
-              - label: coding
-              - label: writing
-              - label: designing
-              - label: other
-      # validations:
-      #   required: true
+              - "coding"
+              - "writing"
+              - "designing"
+              - "other"
+      validations:
+          required: true
     - type: textarea
       id: work-detail
       attributes:
