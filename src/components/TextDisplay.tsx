@@ -32,8 +32,8 @@ export const TextDisplay: FC = () => {
             const divStyleTypewriterWrapper = {
                 "--line-text-length": lineTextLength,
                 "--line-length": lineLength,
-                "animation-delay": `${lineStartSecond}s`,
-                "animation-fill-mode":
+                "animationDelay": `${lineStartSecond}s`,
+                "animationFillMode":
                     array.length === i + 1 ? "forwards" : "none",
             } as React.CSSProperties;
             textStartSecond = lineStartSecond;
@@ -45,12 +45,13 @@ export const TextDisplay: FC = () => {
                 <div
                     style={divStyleTypewriterWrapper}
                     className={styles["type-writer_wrapper"]}
+                    key={line[i]}
                 >
                     {line.map((text) => {
                         const textLength = text.length;
                         const pStyleTypewriter = {
                             "--text-length": textLength,
-                            "animation-delay": `${textStartSecond}s`,
+                            "animationDelay": `${textStartSecond}s`,
                         } as React.CSSProperties;
                         textStartSecond += textLength * 0.2 + 0.2;
 
@@ -58,6 +59,7 @@ export const TextDisplay: FC = () => {
                             <p
                                 style={pStyleTypewriter}
                                 className={styles["type-writer"]}
+                                key={text}
                             >
                                 {(() =>
                                     [...Array(textLength).keys()]
@@ -71,11 +73,12 @@ export const TextDisplay: FC = () => {
                                                             "hankaku-to-zenkaku"
                                                         ]
                                                     }
+                                                    key={j}
                                                 >
                                                     {text[j]}
                                                 </span>
                                             ) : (
-                                                <span>{text[j]}</span>
+                                                <span key={j}>{text[j]}</span>
                                             ),
                                         ))().map((el) => el)}
                             </p>
