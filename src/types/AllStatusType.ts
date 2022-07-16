@@ -6,6 +6,7 @@ import { Character } from "./CharacterType";
 export type AllStatus = {
     character: Character;
     hp: BaseStatus["hp"];
+    maxHp: number;
     level: BaseStatus["level"];
     str: BaseStatus["str"];
     iq: BaseStatus["iq"];
