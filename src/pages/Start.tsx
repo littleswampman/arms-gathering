@@ -5,8 +5,7 @@ import { Layout } from "../layout/Layout";
 
 import { NameInput } from "../components/start/NameInput";
 import { GameStart } from "../components/start/GameStart";
-
-import { TextDisplay } from "../components/TextDisplay";
+import { SelectFirstArms } from "../components/start/SelectFirstArms";
 
 import { GameProgress } from "../types/GameProgress";
 import { gameProgressAtom } from "../atoms/gameProgressAtom";
@@ -22,6 +21,8 @@ export const Start: FC = () => {
                 return <GameStart />;
             case "start_name-input":
                 return <NameInput />;
+            case "start_select-arms":
+                return <SelectFirstArms />;
             default:
                 return <p>Error!</p>;
         }
@@ -29,12 +30,7 @@ export const Start: FC = () => {
 
     return (
         <Layout>
-            <div className="relative h-full w-full">
-                {switchElement()}
-                <div className="absolute bottom-0 w-full">
-                    <TextDisplay />
-                </div>
-            </div>
+            <div className="h-full w-full">{switchElement()}</div>
         </Layout>
     );
 };
