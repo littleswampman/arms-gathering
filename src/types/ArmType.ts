@@ -13,7 +13,7 @@ export const whereToWear = [
 export type Arm = {
     whereToWear: typeof whereToWear[number];
     wearEffect: {
-        status?: keyof BaseStatus;
+        status: keyof BaseStatus;
 
         effect: number;
         memo?: string;
