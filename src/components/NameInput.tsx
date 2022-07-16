@@ -6,6 +6,9 @@ import { Dialog } from "@headlessui/react";
 import { Modal } from "./Modal";
 import { Button } from "./Button";
 
+import { DisplayedText } from "../types/DisplayedText";
+import { displayedTextAtom } from "../atoms/displayedTextAtom";
+
 import { AllStatus } from "../types/AllStatus";
 import { allStatusAtom } from "../atoms/allStatusAtom";
 import { allStatusSelector } from "../selectors/allStatusSelector";
@@ -15,6 +18,9 @@ import { gameProgressAtom } from "../atoms/gameProgressAtom";
 import { gameProgressSelector } from "../selectors/gameProgressSelector";
 
 export const NameInput: FC = () => {
+    const setDisplayedText: SetterOrUpdater<DisplayedText> =
+        useSetRecoilState(displayedTextAtom);
+
     const setAllStatus: SetterOrUpdater<AllStatus> =
         useSetRecoilState(allStatusAtom);
     const allStatus = useRecoilValue(allStatusSelector);
@@ -37,6 +43,8 @@ export const NameInput: FC = () => {
     const openModal = () => {
         setIsOpen(true);
     };
+
+    setDisplayedText({ texts: ["名前・年齢を決める"] });
 
     const changeCharacterName = (event: React.ChangeEvent<HTMLInputElement>) =>
         setCharacterName(event.target.value);
