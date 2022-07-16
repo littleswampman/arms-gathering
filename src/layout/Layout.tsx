@@ -4,6 +4,8 @@ import { FC, ReactNode } from "react";
 
 import styles from "./layout.module.scss";
 
+import { TextDisplay } from "../components/TextDisplay";
+
 type Props = {
     children: ReactNode;
 };
@@ -11,7 +13,12 @@ type Props = {
 export const Layout: FC<Props> = ({ children }) => (
     <div className={`${styles.layout_div} overflow-hidden text-gray-100`}>
         <article className="h-full w-full p-2 md:p-4 lg:p-8">
-            {children}
+            <div className="relative h-full w-full">
+                {children}
+                <div className="absolute bottom-0 w-full">
+                    <TextDisplay />
+                </div>
+            </div>
         </article>
     </div>
 );

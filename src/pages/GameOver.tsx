@@ -4,7 +4,6 @@ import { useSetRecoilState, SetterOrUpdater } from "recoil";
 import { Layout } from "../layout/Layout";
 import { DisplayedText } from "../types/DisplayedText";
 import { displayedTextAtom } from "../atoms/displayedTextAtom";
-import { TextDisplay } from "../components/TextDisplay";
 
 export const GameOver: FC = () => {
     const setDisplayedText: SetterOrUpdater<DisplayedText> =
@@ -16,11 +15,6 @@ export const GameOver: FC = () => {
     return (
         <Layout>
             <div>GameOver</div>
-            <div className="relative h-full w-full">
-                <div className="absolute bottom-0 w-full">
-                    <TextDisplay />
-                </div>
-            </div>
         </Layout>
     );
 };
