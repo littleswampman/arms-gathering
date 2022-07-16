@@ -1,4 +1,4 @@
-import { BaseStatus } from "./BaseStatus";
+import { BaseStatus } from "./BaseStatusType";
 
 export type Command = {
     name: string;

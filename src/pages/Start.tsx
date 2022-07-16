@@ -7,7 +7,7 @@ import { CharacterCreate } from "../components/start/CharacterCreate";
 import { GameStart } from "../components/start/GameStart";
 import { SelectFirstArms } from "../components/start/SelectFirstArms";
 
-import { GameProgress } from "../types/GameProgress";
+import { GameProgress } from "../types/GameProgressType";
 import { gameProgressAtom } from "../atoms/gameProgressAtom";
 import { gameProgressSelector } from "../selectors/gameProgressSelector";
 

@@ -1,4 +1,4 @@
-import { BaseStatus } from "./BaseStatus";
+import { BaseStatus } from "./BaseStatusType";
 
 export const whereToWear = [
     "head",

@@ -6,14 +6,14 @@ import { Dialog } from "@headlessui/react";
 import { Modal } from "../Modal";
 import { Button } from "../Button";
 
-import { DisplayedText } from "../../types/DisplayedText";
+import { DisplayedText } from "../../types/DisplayedTextType";
 import { displayedTextAtom } from "../../atoms/displayedTextAtom";
 
-import { AllStatus } from "../../types/AllStatus";
+import { AllStatus } from "../../types/AllStatusType";
 import { allStatusAtom } from "../../atoms/allStatusAtom";
 import { allStatusSelector } from "../../selectors/allStatusSelector";
 
-import { GameProgress } from "../../types/GameProgress";
+import { GameProgress } from "../../types/GameProgressType";
 import { gameProgressAtom } from "../../atoms/gameProgressAtom";
 import { gameProgressSelector } from "../../selectors/gameProgressSelector";
 

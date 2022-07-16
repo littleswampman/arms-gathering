@@ -1,7 +1,7 @@
-import { BaseStatus } from "./BaseStatus";
-import { Arm } from "./Arm";
-import { StatusAilment } from "./StatusAilment";
-import { Character } from "./Character";
+import { BaseStatus } from "./BaseStatusType";
+import { Arm } from "./ArmType";
+import { StatusAilment } from "./StatusAilmentType";
+import { Character } from "./CharacterType";
 
 export type AllStatus = {
     character: Character;

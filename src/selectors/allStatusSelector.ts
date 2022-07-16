@@ -1,6 +1,6 @@
 import { selector, selectorFamily } from "recoil";
 import { allStatusAtom } from "../atoms/allStatusAtom";
-import { AllStatus } from "../types/AllStatus";
+import { AllStatus } from "../types/AllStatusType";
 
 export const allStatusSelector = selector<AllStatus>({
     key: "allStatusSelector",

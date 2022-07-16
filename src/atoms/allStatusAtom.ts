@@ -1,5 +1,5 @@
 import { atom } from "recoil";
-import { AllStatus } from "../types/AllStatus";
+import { AllStatus } from "../types/AllStatusType";
 
 const defaultAllStatus: AllStatus = {
     character: {

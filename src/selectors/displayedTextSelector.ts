@@ -1,6 +1,6 @@
 import { selector } from "recoil";
 import { displayedTextAtom } from "../atoms/displayedTextAtom";
-import { DisplayedText } from "../types/DisplayedText";
+import { DisplayedText } from "../types/DisplayedTextType";
 
 export const displayedTextSelector = selector<DisplayedText>({
     key: "displayedTextSelector",
