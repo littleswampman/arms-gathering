@@ -7,7 +7,7 @@ export type AllStatus = {
     character: Character;
     hp: BaseStatus["hp"];
     maxHp: number;
-    level: BaseStatus["level"];
+    level: number;
     str: BaseStatus["str"];
     iq: BaseStatus["iq"];
     piety: BaseStatus["piety"];
