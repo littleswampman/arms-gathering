@@ -3,11 +3,11 @@ import { useSetRecoilState, SetterOrUpdater, useRecoilValue } from "recoil";
 
 import { Layout } from "../layout/Layout";
 
-import { NameInput } from "../components/start/NameInput";
+import { CharacterCreate } from "../components/start/CharacterCreate";
 import { GameStart } from "../components/start/GameStart";
 import { SelectFirstArms } from "../components/start/SelectFirstArms";
 
-import { GameProgress } from "../types/GameProgress";
+import { GameProgress } from "../types/GameProgressType";
 import { gameProgressAtom } from "../atoms/gameProgressAtom";
 import { gameProgressSelector } from "../selectors/gameProgressSelector";
 
@@ -20,7 +20,7 @@ export const Start: FC = () => {
             case "":
                 return <GameStart />;
             case "start_name-input":
-                return <NameInput />;
+                return <CharacterCreate />;
             case "start_select-arms":
                 return <SelectFirstArms />;
             default:

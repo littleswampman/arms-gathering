@@ -1,5 +1,5 @@
 import { atom } from "recoil";
-import { DisplayedText } from "../types/DisplayedText";
+import { DisplayedText } from "../types/DisplayedTextType";
 
 export const displayedTextAtom = atom<DisplayedText>({
     key: "displayedText", // 一意のキー

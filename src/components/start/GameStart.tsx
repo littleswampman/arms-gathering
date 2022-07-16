@@ -1,12 +1,12 @@
-import React, { FC } from "react";
+import React, { FC, useEffect } from "react";
 import { useSetRecoilState, SetterOrUpdater, useRecoilValue } from "recoil";
 
 import { Button } from "../Button";
 
-import { DisplayedText } from "../../types/DisplayedText";
+import { DisplayedText } from "../../types/DisplayedTextType";
 import { displayedTextAtom } from "../../atoms/displayedTextAtom";
 
-import { GameProgress } from "../../types/GameProgress";
+import { GameProgress } from "../../types/GameProgressType";
 import { gameProgressAtom } from "../../atoms/gameProgressAtom";
 import { gameProgressSelector } from "../../selectors/gameProgressSelector";
 
@@ -18,7 +18,9 @@ export const GameStart: FC = () => {
         useSetRecoilState(gameProgressAtom);
     const gameProgress = useRecoilValue(gameProgressSelector);
 
-    setDisplayedText({ texts: [""] });
+    useEffect(() => {
+        setDisplayedText({ texts: [""] });
+    }, [setDisplayedText]);
 
     const changeGameProgressToStartNameInput = () => {
         setGameProgress("start_name-input");

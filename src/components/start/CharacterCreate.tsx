@@ -6,18 +6,18 @@ import { Dialog } from "@headlessui/react";
 import { Modal } from "../Modal";
 import { Button } from "../Button";
 
-import { DisplayedText } from "../../types/DisplayedText";
+import { DisplayedText } from "../../types/DisplayedTextType";
 import { displayedTextAtom } from "../../atoms/displayedTextAtom";
 
-import { AllStatus } from "../../types/AllStatus";
+import { AllStatus } from "../../types/AllStatusType";
 import { allStatusAtom } from "../../atoms/allStatusAtom";
 import { allStatusSelector } from "../../selectors/allStatusSelector";
 
-import { GameProgress } from "../../types/GameProgress";
+import { GameProgress } from "../../types/GameProgressType";
 import { gameProgressAtom } from "../../atoms/gameProgressAtom";
 import { gameProgressSelector } from "../../selectors/gameProgressSelector";
 
-export const NameInput: FC = () => {
+export const CharacterCreate: FC = () => {
     const setDisplayedText: SetterOrUpdater<DisplayedText> =
         useSetRecoilState(displayedTextAtom);
 
@@ -30,9 +30,9 @@ export const NameInput: FC = () => {
     const gameProgress = useRecoilValue(gameProgressSelector);
 
     // NOTE 開発用のconsole.log
-    useEffect(() => {
-        console.log(allStatus);
-    }, [allStatus]);
+    // useEffect(() => {
+    //     console.log(allStatus);
+    // }, [allStatus]);
 
     const [characterName, setCharacterName] = useState("");
     const [characterAge, setCharacterAge] = useState(-1);
@@ -44,13 +44,15 @@ export const NameInput: FC = () => {
         setIsOpen(true);
     };
 
-    setDisplayedText({ texts: ["名前・年齢を決める"] });
+    useEffect(() => {
+        setDisplayedText({ texts: ["名前・年齢を決める"] });
+    }, [setDisplayedText]);
 
     const changeCharacterName = (event: React.ChangeEvent<HTMLInputElement>) =>
         setCharacterName(event.target.value);
 
     const confirmCharacter = (name: string, age: number) => {
-        // 名前だけを確定させる
+        // 名前と年齢を確定させる
         setAllStatus({
             ...allStatus,
             character: {

@@ -1,18 +1,19 @@
 import { atom } from "recoil";
-import { AllStatus } from "../types/AllStatus";
+import { AllStatus } from "../types/AllStatusType";
 
 const defaultAllStatus: AllStatus = {
     character: {
         name: "",
         age: 0,
     },
-    hp: 0,
-    level: 0,
-    str: 0,
-    iq: 0,
-    piety: 0,
-    luck: 0,
-    avoidance: 0,
+    hp: 10,
+    maxHp: 10,
+    level: 1,
+    str: 10,
+    iq: 10,
+    piety: 10,
+    luck: 10,
+    avoidance: 10,
     statusAilment: [],
     arms: [],
 };

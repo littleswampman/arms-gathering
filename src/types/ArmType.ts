@@ -1,4 +1,4 @@
-import { BaseStatus } from "./BaseStatus";
+import { BaseStatus } from "./BaseStatusType";
 
 export const whereToWear = [
     "head",
@@ -13,7 +13,7 @@ export const whereToWear = [
 export type Arm = {
     whereToWear: typeof whereToWear[number];
     wearEffect: {
-        status?: BaseStatus;
+        status: keyof BaseStatus;
 
         effect: number;
         memo?: string;
