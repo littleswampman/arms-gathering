@@ -34,8 +34,9 @@ export const GameStart = () => {
         useSetRecoilState(gameProgressAtom);
     const gameProgress = useRecoilValue(gameProgressSelector);
 
-    const updateStatusByArm = useCallback(
-        (arms: Arm[]) => {
+    useEffect(() => {
+        // NOTE もう少し綺麗な実装に出来ないものか
+        const updateStatusByArm = (arms: Arm[]) => {
             const foo = baseStatusArray
                 .map((status) =>
                     arms
@@ -72,13 +73,15 @@ export const GameStart = () => {
             });
 
             setAllStatus({ ...allStatus, ...updatedStatus });
-        },
-        [allStatus, setAllStatus],
-    );
-
-    useEffect(() => {
+        };
         updateStatusByArm(allStatus.arms);
-    }, [allStatus.arms, updateStatusByArm]);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [allStatus.arms, setAllStatus]);
+
+    // NOTE 開発用のconsole.log
+    useEffect(() => {
+        console.log(allStatus);
+    }, [allStatus]);
 
     return <div>GameStart</div>;
 };
