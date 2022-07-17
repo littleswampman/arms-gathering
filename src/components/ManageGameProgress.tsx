@@ -16,7 +16,7 @@ export const ManageGameProgress: FC = () => {
         useSetRecoilState(gameProgressAtom);
 
     useEffect(() => {
-        setGameProgress("start_name-input");
+        setGameProgress("");
     }, [setGameProgress]);
 
     const gameProgress = useRecoilValue(gameProgressSelector);
@@ -33,7 +33,7 @@ export const ManageGameProgress: FC = () => {
             case /game-clear.*/.test(gameProg):
                 return <p>error!! game-clear is not defined</p>;
             default:
-                return <p>Error!</p>;
+                return <Start />;
         }
     };
 
