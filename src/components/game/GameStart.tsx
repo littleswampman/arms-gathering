@@ -37,7 +37,7 @@ export const GameStart = () => {
     useEffect(() => {
         // NOTE もう少し綺麗な実装に出来ないものか
         const updateStatusByArm = (arms: Arm[]) => {
-            const foo = baseStatusArray
+            const changedStatus = baseStatusArray
                 .map((status) =>
                     arms
                         .map((arm) =>
@@ -69,7 +69,7 @@ export const GameStart = () => {
             ) as BaseStatus;
 
             baseStatusArray.forEach((status, i) => {
-                updatedStatus[status] = allStatus[status] + foo[i];
+                updatedStatus[status] = allStatus[status] + changedStatus[i];
             });
 
             setAllStatus({ ...allStatus, ...updatedStatus });
