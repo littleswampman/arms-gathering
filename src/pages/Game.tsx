@@ -5,7 +5,7 @@ import { Layout } from "../layout/Layout";
 import { DisplayedText } from "../types/DisplayedTextType";
 import { displayedTextAtom } from "../atoms/displayedTextAtom";
 
-export const Playing: FC = () => {
+export const Game: FC = () => {
     const setDisplayedText: SetterOrUpdater<DisplayedText> =
         useSetRecoilState(displayedTextAtom);
     setDisplayedText({
