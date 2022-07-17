@@ -10,7 +10,7 @@ import { GameProgress } from "../../types/GameProgressType";
 import { gameProgressAtom } from "../../atoms/gameProgressAtom";
 import { gameProgressSelector } from "../../selectors/gameProgressSelector";
 
-export const GameStart: FC = () => {
+export const StartUp: FC = () => {
     const setDisplayedText: SetterOrUpdater<DisplayedText> =
         useSetRecoilState(displayedTextAtom);
 

@@ -4,7 +4,7 @@ import { useSetRecoilState, SetterOrUpdater, useRecoilValue } from "recoil";
 import { Layout } from "../layout/Layout";
 
 import { CharacterCreate } from "../components/start/CharacterCreate";
-import { GameStart } from "../components/start/GameStart";
+import { StartUp } from "../components/start/StartUp";
 import { SelectFirstArms } from "../components/start/SelectFirstArms";
 
 import { GameProgress } from "../types/GameProgressType";
@@ -18,7 +18,7 @@ export const Start: FC = () => {
     const switchElement = () => {
         switch (gameProgress) {
             case "":
-                return <GameStart />;
+                return <StartUp />;
             case "start_name-input":
                 return <CharacterCreate />;
             case "start_select-arms":
