@@ -9,4 +9,5 @@ export type GameProgress =
     | "game_room"
     | "game_change-floor"
     | "game-over"
-    | "game-clear";
+    | "game-clear"
+    | "room";
