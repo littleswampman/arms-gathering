@@ -63,8 +63,6 @@ export const SelectFirstArms: FC = () => {
 
     return (
         <div className="flex items-center justify-center">
-            <div>A</div>
-            <div>B</div>
             {createTwoArms(allStatus.luck, 1, selectFirstArmsProgress).map(
                 (arm, i) => (
                     <Button
