@@ -17,3 +17,12 @@ export const baseStatusArray = [
     "luck", // 幸運 死の臭いを嗅ぎ分ける力であり、残念ながらポーカーは強くならない
     "avoidance", // 回避 結局のところ、どんな鋭い攻撃も当たらなければ意味はないのである
 ] as (keyof BaseStatus)[];
+
+export const baseStatusObject: BaseStatus = {
+    hp: 0,
+    str: 0,
+    iq: 0,
+    piety: 0,
+    luck: 0,
+    avoidance: 0,
+};
