@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useEffect } from "react";
 import { useRecoilValue } from "recoil";
 
 import { processedDisplayedTextSelector } from "../selectors/displayedTextSelector";
@@ -16,9 +16,17 @@ const timer = (() => {
 })();
 
 export const TextDisplay: FC = () => {
-    let textStartSecond = timer() - 0.4;
-    let lineStartSecond = timer() - 0.4;
+    let textStartSecond: number;
+    let lineStartSecond: number;
     const texts = useRecoilValue(processedDisplayedTextSelector);
+    useEffect(() => {
+        // NOTE ESLintを無理やり黙らせているけれど、なんとかならないものか
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+        textStartSecond = timer() - 0;
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+        lineStartSecond = timer() - 0;
+    }, [texts]);
+
     // 既に1行、1画面に表示する文字ごとに区切る処理をしてある文字列
 
     const textElements = (allTexts: string[][]) =>
