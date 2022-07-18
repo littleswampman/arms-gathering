@@ -29,11 +29,6 @@ export const CharacterCreate: FC = () => {
         useSetRecoilState(gameProgressAtom);
     const gameProgress = useRecoilValue(gameProgressSelector);
 
-    // NOTE 開発用のconsole.log
-    // useEffect(() => {
-    //     console.log(allStatus);
-    // }, [allStatus]);
-
     const [characterName, setCharacterName] = useState("");
     const [characterAge, setCharacterAge] = useState(-1);
     const [isOpen, setIsOpen] = useState(false);
