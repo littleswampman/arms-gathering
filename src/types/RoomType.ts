@@ -1,3 +1,5 @@
+import { RoomEvent } from "./RoomEventType";
+
 export type Room = {
-    eventExists: boolean;
+    event: RoomEvent;
 };
