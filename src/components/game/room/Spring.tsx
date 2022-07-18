@@ -25,6 +25,7 @@ import {
     baseStatusArray,
     baseStatusObject,
 } from "../../../types/BaseStatusType";
+import { updateStatusNumByEffects } from "../../../services/updateStatusNumByEffects";
 
 export const Spring = () => {
     const setDisplayedText: SetterOrUpdater<DisplayedText> =
@@ -37,9 +38,11 @@ export const Spring = () => {
     const setGameProgress: SetterOrUpdater<GameProgress> =
         useSetRecoilState(gameProgressAtom);
 
+    const [buttonIsView, setButtonIsView] = useState(true);
+
     type SpringProgress = {
         progress: "drink-or-not" | "result";
-        result?: { status: string; effect: number };
+        result?: { status: keyof BaseStatus; effect: number };
     };
     const [progress, setProgress] = useState({
         progress: "drink-or-not",
@@ -52,48 +55,61 @@ export const Spring = () => {
                       `${progress.result.status}が${progress.result.effect}変化した！`,
                   ]
                 : ["水の湧き出ている泉がある", "飲みますか？"];
-        setDisplayedText({ texts });
+        setTimeout(() => {
+            setDisplayedText({ texts });
+        }, 10);
     }, [progress.progress, progress.result, setDisplayedText]);
+
+    useEffect(() => {
+        if (progress.result !== undefined) {
+            console.log("progress", progress);
+            updateStatusNumByEffects(
+                [progress.result],
+                setAllStatus,
+                allStatus,
+            );
+        }
+
+        setTimeout(() => {
+            setGameProgress("game_select-room");
+        }, 5000);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [progress.result, setAllStatus, setGameProgress]);
 
     return (
         <div className="flex">
-            <Button
-                onClick={() => {
-                    const status =
-                        baseStatusArray[
-                            Math.floor(Math.random() * baseStatusArray.length)
-                        ];
-                    const effect = Math.ceil(Math.random() * 10);
-                    setProgress({
-                        progress: "result",
-                        result: { status, effect },
-                    });
-                    const updatedAllStatus: AllStatus =
-                        progress.result?.status !== undefined
-                            ? {
-                                  ...allStatus,
-                                  [progress.result?.status]:
-                                      progress.result?.effect,
-                              }
-                            : allStatus;
-                    setAllStatus(updatedAllStatus);
-
-                    setTimeout(() => {
-                        setGameProgress("game_select-room");
-                    }, 10000);
-                }}
-            >
-                飲む
-            </Button>
-            <Button
-                onClick={() => {
-                    setTimeout(() => {
-                        setGameProgress("game_select-room");
-                    }, 5000);
-                }}
-            >
-                飲まない
-            </Button>
+            {buttonIsView && (
+                <>
+                    <Button
+                        onClick={() => {
+                            setButtonIsView(false);
+                            const status =
+                                baseStatusArray[
+                                    Math.floor(
+                                        Math.random() * baseStatusArray.length,
+                                    )
+                                ];
+                            const effect = Math.ceil(Math.random() * 10);
+                            setProgress({
+                                progress: "result",
+                                result: { status, effect },
+                            });
+                        }}
+                    >
+                        飲む
+                    </Button>
+                    <Button
+                        onClick={() => {
+                            setButtonIsView(false);
+                            setTimeout(() => {
+                                setGameProgress("game_select-room");
+                            }, 5000);
+                        }}
+                    >
+                        飲まない
+                    </Button>
+                </>
+            )}
         </div>
     );
 };
