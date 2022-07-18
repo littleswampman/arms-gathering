@@ -21,6 +21,8 @@ import { Room } from "../../types/RoomType";
 import { roomAtom } from "../../atoms/roomAtom";
 import { roomSelector } from "../../selectors/roomSelector";
 
+import { Spring } from "./room/Spring";
+
 export const GameRoom = () => {
     const setDisplayedText: SetterOrUpdater<DisplayedText> =
         useSetRecoilState(displayedTextAtom);
@@ -38,13 +40,22 @@ export const GameRoom = () => {
         setDisplayedText({ texts: [`Room: ${room.event}`] });
     }, [room.event, setDisplayedText]);
 
-    return (
-        <Button
-            onClick={() => {
-                setGameProgress("game_select-room");
-            }}
-        >
-            Room
-        </Button>
-    );
+    const switchElement = () => {
+        switch (room.event) {
+            case "spring":
+                return <Spring />;
+            default:
+                return (
+                    <Button
+                        onClick={() => {
+                            setGameProgress("game_select-room");
+                        }}
+                    >
+                        Room
+                    </Button>
+                );
+        }
+    };
+
+    return <>{switchElement()}</>;
 };
