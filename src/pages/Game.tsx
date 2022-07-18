@@ -1,15 +1,19 @@
-import React, { FC } from "react";
+import React, { FC, useEffect } from "react";
 import { useSetRecoilState, SetterOrUpdater, useRecoilValue } from "recoil";
 
 import { Layout } from "../layout/Layout";
 
 import { GameStart } from "../components/game/GameStart";
+import { SelectRoom } from "../components/game/SelectRoom";
 
 import { GameProgress } from "../types/GameProgressType";
 import { gameProgressAtom } from "../atoms/gameProgressAtom";
 import { gameProgressSelector } from "../selectors/gameProgressSelector";
 
+import { allStatusSelector } from "../selectors/allStatusSelector";
+
 export const Game: FC = () => {
+    const allStatus = useRecoilValue(allStatusSelector);
     const setGameProgress: SetterOrUpdater<GameProgress> =
         useSetRecoilState(gameProgressAtom);
     const gameProgress = useRecoilValue(gameProgressSelector);
@@ -19,7 +23,7 @@ export const Game: FC = () => {
             case "game_start":
                 return <GameStart />;
             case "game_select-room":
-                return <p>a</p>;
+                return <SelectRoom />;
             case "game_room":
                 return <p>a</p>;
             case "game_change-floor":
@@ -28,6 +32,11 @@ export const Game: FC = () => {
                 return <p>Error!</p>;
         }
     };
+
+    // NOTE 開発用のconsole.log
+    useEffect(() => {
+        console.log(allStatus);
+    }, [allStatus]);
 
     return (
         <Layout>
