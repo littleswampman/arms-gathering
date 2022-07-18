@@ -68,11 +68,10 @@ export const Spring = () => {
                 setAllStatus,
                 allStatus,
             );
+            setTimeout(() => {
+                setGameProgress("game_select-room");
+            }, 5000);
         }
-
-        setTimeout(() => {
-            setGameProgress("game_select-room");
-        }, 5000);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [progress.result, setAllStatus, setGameProgress]);
 
