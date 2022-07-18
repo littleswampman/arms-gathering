@@ -4,16 +4,21 @@ import { FC, ReactNode } from "react";
 
 import styles from "./layout.module.scss";
 
+import { TextDisplay } from "../components/TextDisplay";
+
 type Props = {
     children: ReactNode;
 };
 
-export const Layout: FC<Props> = ({ children }) => {
-    return (
-        <div className={`${styles.layout_div} overflow-hidden text-gray-100`}>
-            <article className="h-screen w-screen p-2 md:p-4 lg:p-8">
+export const Layout: FC<Props> = ({ children }) => (
+    <div className={`${styles.layout_div} overflow-hidden text-gray-100`}>
+        <article className="h-full w-full p-2 md:p-4 lg:p-8">
+            <div className="relative h-full w-full">
                 {children}
-            </article>
-        </div>
-    );
-};
+                <div className="absolute bottom-0 w-full">
+                    <TextDisplay />
+                </div>
+            </div>
+        </article>
+    </div>
+);
