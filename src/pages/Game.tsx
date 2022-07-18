@@ -11,6 +11,7 @@ import { gameProgressAtom } from "../atoms/gameProgressAtom";
 import { gameProgressSelector } from "../selectors/gameProgressSelector";
 
 import { allStatusSelector } from "../selectors/allStatusSelector";
+import { GameRoom } from "../components/game/GameRoom";
 
 export const Game: FC = () => {
     const allStatus = useRecoilValue(allStatusSelector);
@@ -25,7 +26,7 @@ export const Game: FC = () => {
             case "game_select-room":
                 return <SelectRoom />;
             case "game_room":
-                return <p>a</p>;
+                return <GameRoom />;
             case "game_change-floor":
                 return <p>a</p>;
             default:
