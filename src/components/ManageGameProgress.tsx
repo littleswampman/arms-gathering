@@ -11,6 +11,12 @@ import { GameProgress } from "../types/GameProgressType";
 import { gameProgressAtom } from "../atoms/gameProgressAtom";
 import { gameProgressSelector } from "../selectors/gameProgressSelector";
 
+import { AllStatus } from "../types/AllStatusType";
+import { allStatusAtom } from "../atoms/allStatusAtom";
+import { allStatusSelector } from "../selectors/allStatusSelector";
+
+import { updateStatusNumByArm } from "../services/updateStatusNumByArms";
+
 export const ManageGameProgress: FC = () => {
     const setGameProgress: SetterOrUpdater<GameProgress> =
         useSetRecoilState(gameProgressAtom);
@@ -18,6 +24,15 @@ export const ManageGameProgress: FC = () => {
     useEffect(() => {
         setGameProgress("");
     }, [setGameProgress]);
+
+    const setAllStatus: SetterOrUpdater<AllStatus> =
+        useSetRecoilState(allStatusAtom);
+    const allStatus = useRecoilValue(allStatusSelector);
+
+    useEffect(() => {
+        updateStatusNumByArm(allStatus.arms, setAllStatus, allStatus);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [setAllStatus, allStatus.arms, setGameProgress]);
 
     const gameProgress = useRecoilValue(gameProgressSelector);
     const switchElement = (gameProg: string) => {
