@@ -62,7 +62,6 @@ export const Spring = () => {
 
     useEffect(() => {
         if (progress.result !== undefined) {
-            console.log("progress", progress);
             updateStatusNumByEffects(
                 [progress.result],
                 setAllStatus,
