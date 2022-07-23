@@ -25,6 +25,7 @@ import { roomAtom } from "../../atoms/roomAtom";
 import { roomSelector } from "../../selectors/roomSelector";
 
 import { Spring } from "./room/Spring";
+import { Statue } from "./room/Statue";
 
 export const GameRoom = () => {
     const setDisplayedText: SetterOrUpdater<DisplayedText> =
@@ -47,6 +48,8 @@ export const GameRoom = () => {
         switch (room.event) {
             case "spring":
                 return <Spring />;
+            case "statue":
+                return <Statue />;
             default:
                 return (
                     <Button
