@@ -30,7 +30,7 @@ import {
 } from "../../../types/BaseStatusType";
 import { updateStatusNumByEffects } from "../../../services/updateStatusNumByEffects";
 
-export const Spring = () => {
+export const Spring: FC = () => {
     const setDisplayedText: SetterOrUpdater<DisplayedText> =
         useSetRecoilState(displayedTextAtom);
 

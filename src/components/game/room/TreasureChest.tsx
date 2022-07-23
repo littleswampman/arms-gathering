@@ -30,7 +30,7 @@ import { createArm } from "../../../services/createArm";
 import { Arm } from "../../../types/ArmType";
 import { updateStatusNumByArm } from "../../../services/updateStatusNumByArms";
 
-export const TreasureChest = () => {
+export const TreasureChest: FC = () => {
     const setDisplayedText: SetterOrUpdater<DisplayedText> =
         useSetRecoilState(displayedTextAtom);
 

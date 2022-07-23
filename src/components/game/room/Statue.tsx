@@ -27,7 +27,7 @@ import {
 } from "../../../types/BaseStatusType";
 import { updateStatusNumByEffects } from "../../../services/updateStatusNumByEffects";
 
-export const Statue = () => {
+export const Statue: FC = () => {
     const setDisplayedText: SetterOrUpdater<DisplayedText> =
         useSetRecoilState(displayedTextAtom);
 
