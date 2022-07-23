@@ -10,8 +10,11 @@ import { DisplayedText } from "../../../types/DisplayedTextType";
 import { displayedTextAtom } from "../../../atoms/displayedTextAtom";
 
 import { AllStatus } from "../../../types/AllStatusType";
-import { allStatusAtom } from "../../../atoms/allStatusAtom";
-import { allStatusSelector } from "../../../selectors/allStatusSelector";
+import { statusAtom } from "../../../atoms/statusAtom";
+import { statusSelector } from "../../../selectors/statusSelector";
+import { allStatusSelector } from "../../../selectors/statusSelector";
+
+import { Status } from "../../../types/StatusType";
 
 import { GameProgress } from "../../../types/GameProgressType";
 import { gameProgressAtom } from "../../../atoms/gameProgressAtom";
@@ -32,7 +35,7 @@ export const Spring = () => {
         useSetRecoilState(displayedTextAtom);
 
     const setAllStatus: SetterOrUpdater<AllStatus> =
-        useSetRecoilState(allStatusAtom);
+        useSetRecoilState(allStatusSelector);
     const allStatus = useRecoilValue(allStatusSelector);
 
     const setGameProgress: SetterOrUpdater<GameProgress> =
@@ -87,7 +90,10 @@ export const Spring = () => {
                                         Math.random() * baseStatusArray.length,
                                     )
                                 ];
-                            const effect = Math.ceil(Math.random() * 10);
+                            const effect = Math.ceil(
+                                allStatus.luck -
+                                    Math.random() * (allStatus.luck * 1.6),
+                            );
                             setProgress({
                                 progress: "result",
                                 result: { status, effect },

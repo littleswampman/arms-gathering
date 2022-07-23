@@ -12,8 +12,8 @@ import { gameProgressAtom } from "../atoms/gameProgressAtom";
 import { gameProgressSelector } from "../selectors/gameProgressSelector";
 
 import { AllStatus } from "../types/AllStatusType";
-import { allStatusAtom } from "../atoms/allStatusAtom";
-import { allStatusSelector } from "../selectors/allStatusSelector";
+import { statusAtom } from "../atoms/statusAtom";
+import { statusSelector, allStatusSelector } from "../selectors/statusSelector";
 
 import { updateStatusNumByArm } from "../services/updateStatusNumByArms";
 
@@ -26,7 +26,7 @@ export const ManageGameProgress: FC = () => {
     }, [setGameProgress]);
 
     const setAllStatus: SetterOrUpdater<AllStatus> =
-        useSetRecoilState(allStatusAtom);
+        useSetRecoilState(allStatusSelector);
     const allStatus = useRecoilValue(allStatusSelector);
 
     useEffect(() => {

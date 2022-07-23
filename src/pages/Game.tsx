@@ -10,7 +10,7 @@ import { GameProgress } from "../types/GameProgressType";
 import { gameProgressAtom } from "../atoms/gameProgressAtom";
 import { gameProgressSelector } from "../selectors/gameProgressSelector";
 
-import { allStatusSelector } from "../selectors/allStatusSelector";
+import { allStatusSelector } from "../selectors/statusSelector";
 import { GameRoom } from "../components/game/GameRoom";
 
 export const Game: FC = () => {

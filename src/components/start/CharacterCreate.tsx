@@ -10,8 +10,11 @@ import { DisplayedText } from "../../types/DisplayedTextType";
 import { displayedTextAtom } from "../../atoms/displayedTextAtom";
 
 import { AllStatus } from "../../types/AllStatusType";
-import { allStatusAtom } from "../../atoms/allStatusAtom";
-import { allStatusSelector } from "../../selectors/allStatusSelector";
+import { statusAtom } from "../../atoms/statusAtom";
+import {
+    statusSelector,
+    allStatusSelector,
+} from "../../selectors/statusSelector";
 
 import { GameProgress } from "../../types/GameProgressType";
 import { gameProgressAtom } from "../../atoms/gameProgressAtom";
@@ -22,7 +25,7 @@ export const CharacterCreate: FC = () => {
         useSetRecoilState(displayedTextAtom);
 
     const setAllStatus: SetterOrUpdater<AllStatus> =
-        useSetRecoilState(allStatusAtom);
+        useSetRecoilState(allStatusSelector);
     const allStatus = useRecoilValue(allStatusSelector);
 
     const setGameProgress: SetterOrUpdater<GameProgress> =
