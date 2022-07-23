@@ -107,7 +107,7 @@ export const Spring = () => {
                             setButtonIsView(false);
                             setTimeout(() => {
                                 setGameProgress("game_select-room");
-                            }, 5000);
+                            }, 2000);
                         }}
                     >
                         飲まない
