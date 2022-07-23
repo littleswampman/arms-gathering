@@ -26,6 +26,7 @@ import { roomSelector } from "../../selectors/roomSelector";
 
 import { Spring } from "./room/Spring";
 import { Statue } from "./room/Statue";
+import { TreasureChest } from "./room/TreasureChest";
 
 export const GameRoom = () => {
     const setDisplayedText: SetterOrUpdater<DisplayedText> =
@@ -50,6 +51,8 @@ export const GameRoom = () => {
                 return <Spring />;
             case "statue":
                 return <Statue />;
+            case "treasure-chest":
+                return <TreasureChest />;
             default:
                 return (
                     <Button
