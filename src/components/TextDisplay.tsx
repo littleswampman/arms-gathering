@@ -1,31 +1,30 @@
-import React, { FC, useEffect } from "react";
+import React, { FC, useEffect, useRef } from "react";
 import { useRecoilValue } from "recoil";
 
 import { processedDisplayedTextSelector } from "../selectors/displayedTextSelector";
 import styles from "./text-display.module.scss";
 
-const timer = (() => {
-    // CSSアニメーションの発火タイミングを調整する為のタイマー
-    // timer()で値を取得する
-    let delay = 0;
-    setInterval(() => {
-        delay += 0.1;
-    }, 100);
+// const timer = (() => {
+//     // CSSアニメーションの発火タイミングを調整する為のタイマー
+//     // timer()で値を取得する
+//     let delay = 0;
+//     setInterval(() => {
+//         delay += 0.1;
+//     }, 100);
 
-    return () => delay;
-})();
+//     return () => delay;
+// })();
 
 export const TextDisplay: FC = () => {
-    let textStartSecond: number;
-    let lineStartSecond: number;
+    // const time = useRef(timer());
+    let textStartSecond = 0;
+    let lineStartSecond = 0;
     const texts = useRecoilValue(processedDisplayedTextSelector);
-    useEffect(() => {
-        // NOTE ESLintを無理やり黙らせているけれど、なんとかならないものか
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-        textStartSecond = timer() - 0;
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-        lineStartSecond = timer() - 0;
-    }, [texts]);
+    // useEffect(() => {
+    //     // NOTE ESLintを無理やり黙らせているけれど、なんとかならないものか
+    //     time.current = Math.round(timer());
+
+    // }, [texts]);
 
     // 既に1行、1画面に表示する文字ごとに区切る処理をしてある文字列
 
