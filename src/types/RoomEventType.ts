@@ -3,6 +3,7 @@ export const roomEventArray = [
     "spring",
     "statue",
     "treasure-chest",
+    "staircase",
     "",
 ] as const;
 
