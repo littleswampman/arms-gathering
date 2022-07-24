@@ -10,11 +10,11 @@ import { GameProgress } from "../types/GameProgressType";
 import { gameProgressAtom } from "../atoms/gameProgressAtom";
 import { gameProgressSelector } from "../selectors/gameProgressSelector";
 
-import { allStatusSelector } from "../selectors/statusSelector";
+import { statusSelector } from "../selectors/statusSelector";
 import { GameRoom } from "../components/game/GameRoom";
 
 export const Game: FC = () => {
-    const allStatus = useRecoilValue(allStatusSelector);
+    const status = useRecoilValue(statusSelector);
     const setGameProgress: SetterOrUpdater<GameProgress> =
         useSetRecoilState(gameProgressAtom);
     const gameProgress = useRecoilValue(gameProgressSelector);
@@ -36,8 +36,8 @@ export const Game: FC = () => {
 
     // NOTE 開発用のconsole.log
     useEffect(() => {
-        console.log(allStatus);
-    }, [allStatus]);
+        console.log(status);
+    }, [status]);
 
     return (
         <Layout>
